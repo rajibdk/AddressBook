@@ -1,6 +1,9 @@
 package tutorial.adressbook.main;
 
 import tutorial.adressbook.entity.Contact;
+import tutorial.adressbook.repository.ArrayListRepository;
+import tutorial.adressbook.repository.ContactRepository;
+import tutorial.adressbook.repository.Repository;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,6 +12,13 @@ import java.util.Scanner;
 
 public class AddressBookMain {
     public static void main(String[] args) {
+        Repository repository;
+        if(conf == siemens) {
+            repository = new ArrayListRepository();
+        } else {
+            repository = new ContactRepository();
+        }
+
         System.out.println("Add a contact: (ID, First Name, Last Name, Mobile Number and Location)");
         Scanner scanner = new Scanner(System.in);
         String id = scanner.nextLine();
@@ -25,10 +35,7 @@ public class AddressBookMain {
         contact.setLocation(location);
 
         System.out.println("Contact " + contact);
-
-        HashSet<Contact> hashSet = new HashSet();
-        hashSet.add(contact);
-
-        System.out.println(hashSet);
+        repository.addContact(contact);
+        repository.printContacts();
     }
 }
