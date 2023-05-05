@@ -8,6 +8,27 @@ public class HighestNumber<T extends Number> {
         return two;
     }
 
+    public Integer compare1(TwoNumbers<Integer> numbers) {
+        if(numbers.getNumberOne().doubleValue() > numbers.getNumberTwo().doubleValue()) {
+            return numbers.getNumberOne();
+        }
+        return numbers.getNumberTwo();
+    }
+
+    public Double compare2(TwoNumbers<Double> numbers) {
+        if(numbers.getNumberOne().doubleValue() > numbers.getNumberTwo().doubleValue()) {
+            return numbers.getNumberOne();
+        }
+        return numbers.getNumberTwo();
+    }
+
+    public T compare3(TwoNumbers<? extends Number> numbers) {
+        if(numbers.getNumberOne().doubleValue() > numbers.getNumberTwo().doubleValue()) {
+            return (T) numbers.getNumberOne();
+        }
+        return (T) numbers.getNumberTwo();
+    }
+
     public static void main(String[] args) {
         Double result = new HighestNumber<Double>().compare(5.5, 6.2);
         System.out.println(result);

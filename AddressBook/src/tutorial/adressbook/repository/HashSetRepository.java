@@ -3,13 +3,14 @@ package tutorial.adressbook.repository;
 import tutorial.adressbook.entity.Contact;
 
 import java.util.AbstractCollection;
-import java.util.ArrayList;
+import java.util.HashSet;
 
-public class ArrayListRepository implements ArrayRepository {
-    private ArrayList<Contact> contacts = new ArrayList<>();
+public class HashSetRepository implements ArrayRepository {
+    private HashSet<Contact> contacts = new HashSet<>();
+
     @Override
     public void addContact(Contact contact) {
-        contacts.add(contact);
+        this.contacts.add(contact);
     }
 
     @Override
