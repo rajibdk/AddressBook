@@ -1,5 +1,11 @@
 package tutorial.adressbook.generics;
 
+import tutorial.adressbook.entity.Contact;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class GreaterNumber<T extends Number>{
     public T compute(T firstNo, T secondNo) {
         if(firstNo.doubleValue() > secondNo.doubleValue()) {
@@ -9,19 +15,24 @@ public class GreaterNumber<T extends Number>{
     }
 
     public static void main(String[] args) {
-        GreaterNumber<Double> greaterNumber = new GreaterNumber();
-        Double result = greaterNumber.compute(5.5, 6.66);
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(12);
+        numbers.add(24);
+        numbers.add(600);
 
-        System.out.println("The greater number is " + result);
+        List<Double> number_doubles = new ArrayList<>();
+        number_doubles.add(10.11);
+        number_doubles.add(122.899);
 
-        GreaterNumber<Integer> greaterNumber1 = new GreaterNumber();
-        Integer result1 = greaterNumber1.compute(5, 6);
+        print_numbers(numbers);
+        print_numbers(number_doubles);
 
-        System.out.println("The greater number is " + result1);
-
-        GreaterNumber<Float> greaterNumber2 = new GreaterNumber();
-        Float result2 = greaterNumber2.compute(5.533f, 6.66f);
-
-        System.out.println("The greater number is " + result2);
+        List<Contact> contacts = new ArrayList<>();
+        print_numbers(contacts);
+    }
+    private static void print_numbers(List<? extends Object> numbers) {
+        numbers.forEach(no -> {
+            System.out.println(((Contact)no).getMobileNumber());
+        });
     }
 }
