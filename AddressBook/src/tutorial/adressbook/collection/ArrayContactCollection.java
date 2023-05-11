@@ -24,9 +24,9 @@ public class ArrayContactCollection implements ContactCollection {
 
     @Override
     public Contact search(Contact contact) {
-        for (Contact temp : contacts) {
+        for (Object temp : contacts) {
             if(temp.equals(contact)) {
-               return temp;
+               return (Contact) temp;
             }
         }
         return null;
