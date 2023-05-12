@@ -7,6 +7,15 @@ public class Contact {
     private int mobileNumber;
     private String location;
 
+    public Contact(String firstName, int mobileNumber) {
+        this.firstName = firstName;
+        this.mobileNumber = mobileNumber;
+    }
+
+    public Contact() {
+
+    }
+
     public int getId() {
         return id;
     }

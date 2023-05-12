@@ -2,14 +2,13 @@ package tutorial.adressbook.threads;
 
 public class Resource {
     volatile Integer INDEX = 0;
-    boolean isIncremented = false;
     Object object = new Object();
 
      public void setINDEX(int reminder) {
         synchronized (object) {
             while (INDEX % 3 != reminder) {
                 try {
-                    object.wait();
+                    object.wait(1000);
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
