@@ -1,9 +1,6 @@
 package tutorial.adressbook.threads;
 
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class MainProgram {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -26,11 +23,11 @@ public class MainProgram {
         MyThread myThread2 = new MyThread("Second", resource, 2);
         MyThread myThread1 = new MyThread("First", resource, 1);
 
-        ExecutorService executorService = Executors.newCachedThreadPool();
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(3);
         executorService.submit(myThread1);
         executorService.submit(myThread2);
         executorService.submit(myThread3);
-
+        executorService.schedule(myThread1, 10, TimeUnit.SECONDS);
         executorService.shutdown();
     }
 }

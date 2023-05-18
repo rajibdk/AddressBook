@@ -30,7 +30,7 @@ public class MainStreamApp {
         List<Integer> odds = integers.stream().map(ele -> multiply(ele)).toList();
         System.out.println(odds);
 
-        //limit generated list to 100
+        //limit generated list to 10
         Stream<Double> limits = Stream.generate(Math::random).limit(10);
         System.out.println(limits.toList());
 
